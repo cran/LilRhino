@@ -158,7 +158,6 @@ Monty_Hall = function(Games = 10, Choice = "Stay")
     ggplot2::theme(plot.title = ggplot2::element_text(hjust = .5))
 }
 
-
 Binary_Network = function(X, Y, X_test, val_split, nodes, epochs, batch_size, verbose = 0)
 {
   model <- keras_model_sequential()
@@ -211,3 +210,73 @@ Feed_Reduction = function(X, Y, X_test, val_split = .1, nodes = NULL, epochs = 1
 
   return(list(train = final_train, test = final_test))
 }
+
+Num_Al_Sep = function(vec)
+{
+  vec = unlist(strsplit(vec, "(?=[A-Za-z])(?<=[0-9])|(?=[0-9])(?<=[A-Za-z])", perl = TRUE))
+  vec = paste(vec, collapse = " ")
+  return(vec)
+}
+
+Pretreatment = function(title_vec, stem = TRUE, lower = TRUE, parallel = F)
+{
+  Num_Al_Sep = function(vec){
+    vec = unlist(strsplit(vec, "(?=[A-Za-z])(?<=[0-9])|(?=[0-9])(?<=[A-Za-z])", perl = TRUE))
+    vec = paste(vec, collapse = " ")
+    return(vec)
+  }
+  if(parallel == F){
+    titles = as.character(title_vec) %>%
+      lapply(gsub, pattern = "[^[:alnum:][:space:]]",replacement = "") %>%
+      unlist() %>%
+      lapply(Num_Al_Sep) %>%
+      unlist() %>%
+      lapply(replace_number) %>%
+      unlist()
+    if(stem == TRUE){
+      titles = titles %>%
+        lapply(stemDocument) %>%
+        unlist()
+    }
+    if(lower == TRUE){
+      titles = titles %>%
+        lapply(tolower) %>%
+        unlist()
+    }
+    return(titles)
+  }
+  else{
+    numcore = detectCores() - 1
+    titles = as.character(title_vec) %>%
+      mclapply(gsub, pattern = "[^[:alnum:][:space:]]",replacement = "", mc.cores = numcore) %>%
+      unlist() %>%
+      mclapply(Num_Al_Sep, mc.cores = numcore) %>%
+      unlist() %>%
+      mclapply(replace_number, mc.cores = numcore) %>%
+      unlist()
+    if(stem == TRUE){
+      titles = titles %>%
+        mclapply(stemDocument, mc.cores = numcore) %>%
+        unlist()
+    }
+    if(lower == TRUE){
+      titles = titles %>%
+        mclapply(tolower, mc.cores = numcore) %>%
+        unlist()
+    }
+    return(titles)
+  }
+}
+
+Stopword_Maker = function(titles, cutoff = 20)
+{
+  test = unlist(lapply(as.vector(titles), strsplit, split = ' ', fixed = FALSE))
+  stopwords = test %>%
+    table() %>%
+    sort(decreasing = TRUE) %>%
+    head(cutoff) %>%
+    names()
+  return(stopwords)
+}
+
+
