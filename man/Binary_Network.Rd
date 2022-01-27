@@ -62,7 +62,7 @@ Binary_Network(X, Y, X_test, val_split, nodes, epochs, batch_size, verbose = 0)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-\donttest{
+\dontrun{
 if(8 * .Machine$sizeof.pointer == 64){
   #Feed Network Testing
   library(keras)
