@@ -1,8 +1,8 @@
-927b92f3075d9489f419e70571cb9a42 *DESCRIPTION
-707dc977baef6facb789edc1a414a4b6 *NAMESPACE
-bf74f941655752b13cfa75b613bbc60c *R/Personal_Functions.R
+b73153a2ca30fdd784e9ae3950c640df *DESCRIPTION
+0afb4e0f1ff7584f710073f21860c249 *NAMESPACE
+dd88ff0c9c33cb1c6e1cd6952ed29038 *R/Personal_Functions.R
 e1bf67e569f94adb6cac6055e068b2d5 *README.md
-c85138b221fb06585f79c8c7e595c7ad *man/Binary_Network.Rd
+7848ae6ee18554ef040863603cacbd6c *man/Binary_Network.Rd
 2777d97e4547a6367429b7e37086e400 *man/Bootstrap_Data_Frame.Rd
 6af8097ef569f5b07e78b1175883bef7 *man/Bootstrap_Vocab.Rd
 4d7f6833015dd3921f71577710a74608 *man/Codes_done.Rd
@@ -13,7 +13,7 @@ f6bada176c368f8d8b46315a314f9cae *man/Monty_Hall.Rd
 62cc55738f01001ea9f322f6853d54c4 *man/Nearest_Centroid.Rd
 f757b0f1badb2aeb6fb460ba16146183 *man/Num_Al_Sep.Rd
 2f217e755ec8273907376505a8489e6c *man/Percent.Rd
-cab535a9ef997d7a6d6070a655525a42 *man/Pretreatment.Rd
+7dbe13dcc95e4f85dd6ec4deef24d864 *man/Pretreatment.Rd
 5898dd39eb43b1ff96f6624b824dfb82 *man/Random_Brains.Rd
 0dc68e560cc41c76bac3f7c054ac01b5 *man/Sentence_Vector.Rd
 f766fe8c3f13dc4467fbb50d6d99c356 *man/Stopword_Maker.Rd

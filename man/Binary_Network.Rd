@@ -62,6 +62,7 @@ Binary_Network(X, Y, X_test, val_split, nodes, epochs, batch_size, verbose = 0)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
+
 \dontrun{
 if(8 * .Machine$sizeof.pointer == 64){
   #Feed Network Testing
@@ -84,6 +85,7 @@ if(8 * .Machine$sizeof.pointer == 64){
     y_train[index_train,c(7, 6)], X_test[index_test,], .3, 350, 30, 50)
   }
   }
+
 }
 
 
